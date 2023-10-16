@@ -1,0 +1,135 @@
+* {
+  --dark-green: rgb(0, 88, 0);
+  --translucent-green: rgba(0, 88, 0, 0.288);
+  --white-border: 6px solid white;
+  --green-border: 5px solid var(--dark-green);
+}
+
+/* roboto-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./../assets/fonts/roboto-v30-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* pacifico-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./../assets/fonts/pacifico-v22-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+#grid-container {
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 2fr 1.1fr 1.25fr 10fr .85fr;
+}
+
+#header {
+  grid-row: 1 / 2;
+  background-color: var(--dark-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 4em;
+  font-family: "Pacifico";
+}
+
+#function-bar {
+  grid-row: 2 / 3;
+  border-top: var(--white-border);
+  background-color: var(--dark-green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+}
+
+#project-bar {
+  grid-row: 3 / 4;
+  border-top: var(--white-border);
+  border-bottom: var(--green-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-field {
+  background: white;
+  background-image: linear-gradient(var(--translucent-green) .1em, transparent .1em), linear-gradient(90deg, var(--translucent-green) .1em, transparent .1em);
+  background-size: 4em 4em;
+  grid-row: 4 / 5;
+  border-bottom: var(--green-border);
+}
+
+#footer {
+  grid-row: 5 / 6;
+  background-color: var(--dark-green);
+  border-top: var(--white-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-link {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-link:hover {
+  cursor: pointer;
+}
+
+.github-logo {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+/* Home Menu Styling */
+
+.function:hover {
+  cursor: pointer;
+}
+
+/* End Home Menu Styling */
+
+/* Project Styling */
+
+.project {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-direction: column;
+  max-width: 60px;
+}
+
+.projectImage {
+  width: 25px;
+  height: 25px;
+}
+
+.projectTitle {
+  font-size: .65rem;
+  font-family: "Roboto", sans-serif;
+}
+
+/* End Project Styling */

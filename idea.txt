@@ -1,0 +1,54 @@
+The background 
+will be an excel like dark-green and white color with a dark green 
+header and footer and a white grid-like center. 
+
+The header
+will contain the program's name on a darkgreen background.
+
+The todos
+will be white but with a box-shadow to visually distinguish them 
+from the background. 
+
+The todos
+will contain a title, description, dueDate, and priority level - 
+These levels will be level 1-3, level one being a green inner border,
+level 2 orange, level 3 red. The level will be shown by changing the
+priority level color. 1 = green, 2 = orange, 3 = red. The todos will 
+show their title on top by default and will show the full to-do once
+clicked upon, a second click hides it again. The todo will also contain
+an icon in the top left so that it can be deleted (red letter x).
+
+The prompts
+will be given via the dialogue tag. This will be used to ask for the 
+todo's details.
+
+The layout 
+will contain a title at the top in the header, below this 
+is a scrollable row with functionality, below this is a 
+scrollable row of projects, you can create new projects 
+with a function from the function bar called "New Project". 
+The projects each will contain their individual list of to-dos. 
+
+The footer
+will contain my copyright and a link to my github
+
+The functionality
+at its core, the create new project function will create a project in
+the projects bar. These will all be their inner space with their own 
+inner to-dos. This will be loaded in via JS creating a new empty state
+of to-dos within this newly made project. The project itself will
+thus be something of a constructor which then will also have space for
+its own to-dos. Each project should thus have a way to indicate that 
+it is currently active, this way the correct to-dos-list can be appended
+to the project. Each to-do will be generated from a to-do module (file)
+and imported into the file that creates projects. These projects will
+then be imported into the index.js master-file. The to-dos will get their
+own functionality-bar "Create Todo" function. There should also be an icon
+in the functionality-bar to return to the home page. 
+
+The folder-bar
+will contain all existing projects, these will be represented by a folder
+logo appended to the bar upon project-creation. if the folder is empty
+the logo used will be an empty folder, upon creation of a todo the logo
+will become a full folder, if the todo is deleted the empty folder logo 
+should return. 
