@@ -30,12 +30,11 @@ textContent and checkbox,
 
 import FolderStartingImage from "./assets/images/empty-folder.jpg";
 import FolderHoverImage from "./assets/images/empty-folder-open.png";
+import { CreateTodoScreen, Todo } from "./../src/todo.js";
 
 const projectList = [];
 const projectDivList = [];
-
-// Find a way to make the project into a div which can contain
-// its title and the folder image. 
+let projectCounter = 0;
 
 class Project {
 	constructor(title="blank", todos={}, projectNumber=undefined) {
@@ -47,7 +46,7 @@ class Project {
 
 export function DisplayProjects() {
 	const projectBar = document.getElementById("project-bar");
-	projectBar.style.gap = String(`${100 / projectDivList.length}%`);
+	projectBar.style.gap = String(`${80 / projectDivList.length}%`);
 
 	for (let i = 0; i < projectDivList.length; i++) {
 		projectBar.appendChild(projectDivList[i]);
@@ -57,31 +56,38 @@ export function DisplayProjects() {
 let projectNumber = 0;
 
 export function CreateProject(todos={}) {
-	let projectTitle = prompt("What is the project's title?");
+	if (projectCounter <= 7) {
+		let projectTitle = prompt("What is the project's title?");
 
-	let project = new Project(projectTitle, todos, projectNumber);
-	projectList.push(project);
+		let project = new Project(projectTitle, todos, projectNumber);
+		projectList.push(project);
 
-	// Dom Part Of Project
+		// Dom Part Of Project
 
-	const projectDiv = document.createElement("div");
-	projectDiv.classList.add("project", String(`project${projectNumber}`));
+		const projectDiv = document.createElement("div");
+		projectDiv.classList.add("project", String(`project${projectNumber}`));
 
-	let projectImage = new Image();
-	projectImage.src = FolderStartingImage;
-	projectImage.classList.add("projectImage");
+		let projectImage = new Image();
+		projectImage.src = FolderStartingImage;
+		projectImage.classList.add("projectImage");
 
-	projectDiv.appendChild(projectImage);
+		projectDiv.appendChild(projectImage);
 
-	let projectTitleElement = document.createElement("p");
-	projectTitleElement.classList.add("projectTitle");
-	projectTitleElement.textContent = project.title;
+		let projectTitleElement = document.createElement("p");
+		projectTitleElement.classList.add("projectTitle");
+		projectTitleElement.textContent = project.title;
 
-	projectDiv.append(projectTitleElement);
+		projectDiv.append(projectTitleElement);
 
-	projectDivList.push(projectDiv);
+		projectDivList.push(projectDiv);
 
-	projectNumber++;
+		projectNumber++;
+
+		projectCounter++;
+	}
+	else {
+		alert("You have reached the maximum amount of projects. Delete at least one project to continue.");
+	}
 }
 
 export function DeleteProject() {
@@ -94,17 +100,17 @@ export function DeleteProject() {
 		if (projectToDelete.toLowerCase() == (projectList[i].title).toLowerCase()) {
 			projectList.splice((i), 1);
 			projectDivList.splice((i), 1);
-
-			console.log(projectDivList,  " | ", projectList);
 		}
 	}
+
+	projectCounter--;
 }
 
-// Add event listener to all existing projects. This should load 
-// 2 functions. One to switch to the todo environment (different)
-// function options, no folder bar. This is done by resetting the
-// Html in the function-bar and clearing the folder bar. 
-// The second function should load the todo list part of the projects
-// This can be done by making a todoDiv just like the project div
-// with Html content that gets loaded. This should be based upon
-// the project div's todo content.
+export function AddListeners() {
+	for (let i = 0; i < projectDivList.length; i++) {
+		projectDivList[i].addEventListener("click", function() {
+			CreateTodoScreen();
+			// console.log(projectList[i].todos);
+		});
+	}
+}

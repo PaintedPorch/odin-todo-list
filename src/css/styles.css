@@ -41,6 +41,10 @@
   font-family: "Pacifico";
 }
 
+#header:hover {
+  cursor: pointer;
+}
+
 #function-bar {
   grid-row: 2 / 3;
   border-top: var(--white-border);
@@ -60,6 +64,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 100vw;
 }
 
 #main-field {
@@ -68,6 +73,12 @@
   background-size: 4em 4em;
   grid-row: 4 / 5;
   border-bottom: var(--green-border);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(275px, 1fr));
+  text-align: center;
+  place-content: center;
+  place-items: center;
 }
 
 #footer {
@@ -102,13 +113,9 @@
   border: 3px solid white;
 }
 
-/* Home Menu Styling */
-
 .function:hover {
   cursor: pointer;
 }
-
-/* End Home Menu Styling */
 
 /* Project Styling */
 
@@ -122,6 +129,10 @@
   max-width: 60px;
 }
 
+.project:hover {
+  cursor: pointer;
+}
+
 .projectImage {
   width: 25px;
   height: 25px;
@@ -133,3 +144,41 @@
 }
 
 /* End Project Styling */
+
+/* Todo Screen Styling */
+
+.todo {
+  height: 235px;
+  width: 180px;
+  background-color: white;
+  border-radius: 5%;
+  border: 3px solid var(--dark-green);
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  place-items: center;
+}
+
+.todoTitle {
+  font-family: "Roboto", sans-serif;
+  grid-row: 1 / 2;
+  background-color: var(--dark-green);
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.75rem;
+  height: 100%;
+  width: 100%;
+}
+
+.todoText {
+  font-family: "Roboto", sans-serif;
+  grid-row: 2 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
+
+/* End Todo Screen Styling */

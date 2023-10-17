@@ -1,5 +1,6 @@
 import GHLogo from './assets/images/github_logo.png';
-import { DisplayProjects, CreateProject, DeleteProject } from './../src/project.js';
+import { DisplayProjects, CreateProject, DeleteProject, AddListeners } from './../src/project.js';
+import WipeHtml from './../src/wipeHtml.js';
 
 const githubLogo = new Image();
 githubLogo.src = GHLogo; 
@@ -12,6 +13,8 @@ export default function createHome() {
     const functionBar = document.getElementById("function-bar");
     const functionList = [];
 
+    WipeHtml();
+
     let createProject = document.createElement("p");
     createProject.classList.add("function");
     createProject.classList.add("createProject");
@@ -19,6 +22,7 @@ export default function createHome() {
 
     createProject.addEventListener("click", function() {
         CreateProject();
+        AddListeners();
         DisplayProjects();
     }); 
 
@@ -33,6 +37,7 @@ export default function createHome() {
 
     deleteProject.addEventListener("click", function() {
         DeleteProject();
+        AddListeners();
         DisplayProjects();
     });  
 
@@ -45,14 +50,3 @@ export default function createHome() {
     const ghLink = document.querySelector(".github-link");
     ghLink.appendChild(githubLogo);
 }
-
-/*
-<div id="grid-container">
-        <div id="function-bar">
-            <!-- Generate in JS
-        Whilst in home: Create Project, Delete Project, Rename Project
-        </div>
-        <div id="project-bar"></div>
-        <div id="main-field"></div>
-    </div>
-*/
