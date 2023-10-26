@@ -22,8 +22,8 @@ export default function createHome() {
 
     createProject.addEventListener("click", function() {
         CreateProject();
-        AddListeners();
         DisplayProjects();
+        AddListeners();
     }); 
 
     functionList.push(createProject);
@@ -37,8 +37,8 @@ export default function createHome() {
 
     deleteProject.addEventListener("click", function() {
         DeleteProject();
-        AddListeners();
         DisplayProjects();
+        AddListeners();
     });  
 
     functionList.push(deleteProject);

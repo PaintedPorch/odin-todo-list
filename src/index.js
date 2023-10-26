@@ -2,7 +2,7 @@ import "./css/meyerReset.css";
 import "./css/styles.css";
 import CreateHome from "./../src/home.js";
 import WipeHtml from "./../src/wipeHtml.js";
-import { DisplayProjects } from "./../src/project.js";
+import { DisplayProjects, ShowDefaultProject } from "./../src/project.js";
 
 // Since Home is the standard page on loading
 
@@ -14,3 +14,4 @@ header.addEventListener("click", function() {
 
 WipeHtml();
 CreateHome();
+ShowDefaultProject();
