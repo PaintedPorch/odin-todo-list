@@ -7,9 +7,10 @@ const projectDivList = [];
 let projectCounter = 0;
 
 class Project {
-	constructor(title="blank", todos=[], projectNumber=undefined) {
+	constructor(title="blank", todos=[], todoDivs=[] , projectNumber=undefined) {
 		this.title = title;
 		this.todos = todos;
+		this.todoDivs = todoDivs;
 		this.projectNumber = projectNumber;
 	}
 }
@@ -25,12 +26,12 @@ export function DisplayProjects() {
 
 let projectNumber = 0;
 
-export function CreateProject(projectTitle="DEFAULT", todos=[]) {
+export function CreateProject(projectTitle="DEFAULT", todos=[], todoDivs=[]) {
 	if (projectCounter <= 7) {
 		projectTitle = prompt("What is the project's title?");
 		
 		if (projectTitle != "DEFAULT") {
-			let project = new Project(projectTitle, todos, projectNumber);
+			let project = new Project(projectTitle, todos, todoDivs, projectNumber);
 			projectList.push(project);
 
 			// Dom Part Of Project
@@ -122,7 +123,7 @@ export function DeleteProject() {
 }
 
 export function AddListeners() { 
-	for (let i = 0; i < projectDivList.length; i++) {
+	for (let i = 1; i < projectDivList.length; i++) {
 		projectDivList[i].addEventListener("click", function() {
 			currentProject = projectList[i];
 			CreateTodoScreen();
@@ -142,9 +143,6 @@ export function ShowDefaultProject() {
 TODO CODE 
 
 */
-
-const todoList = [];
-const todoDivList = [];
 
 export class Todo {
 	constructor(title="blank", textContent="blank") {
@@ -192,45 +190,60 @@ export function CreateTodoScreen() {
 
 let todoNumber = 0;
 
+// This function has the todo data, this works, this means that
+// the creation of too many todoDivs is done in the CreateTodoDiv
+// function and not here.
+
 export function CreateTodo(todoTitle="", todoText="") {
 	todoTitle = prompt("What is the todo's title?");
 	todoText = prompt("What is the todo's text?");
 		
 	let todo = new Todo(todoTitle, todoText);
-	todoList.push(todo);
 	currentProject.todos.push(todo);
+
+	// Test if it's easier to have in one function
+
+	const todoDiv = document.createElement("div");
+	todoDiv.classList.add("todo", String(`todo${todoNumber}`));
+
+	let todoTitleElement = document.createElement("h3");
+	todoTitleElement.classList.add("todoTitle");
+	todoTitleElement.textContent = todoTitle;
+
+	todoDiv.appendChild(todoTitleElement);
+
+	let todoTextElement = document.createElement("p");
+	todoTextElement.classList.add("todoText");
+	todoTextElement.textContent = todoText;
+
+	todoDiv.appendChild(todoTextElement);
+
+	currentProject.todoDivs.push(todoDiv);
+
+	todoNumber++;
+
+	console.log("CurrentProject.todos:");
+	console.log(currentProject.todos);
+	console.log("CurrentProject.todoDivs:");
+	console.log(currentProject.todoDivs);
 }
 
-function CreateTodoDiv() {
-	let length = currentProject.todos.length;
+// Due to fixes this is currently obsolete, it will be saved for 
+// possible future use, which I hope won't apply
 
-	for (let i = 0; i < length; i++) {
-		const todoDiv = document.createElement("div");
-		todoDiv.classList.add("todo", String(`todo${todoNumber}`));
-
-		let todoTitleElement = document.createElement("h3");
-		todoTitleElement.classList.add("todoTitle");
-		todoTitleElement.textContent = currentProject.todos[i].title;
-
-		todoDiv.appendChild(todoTitleElement);
-
-		let todoTextElement = document.createElement("p");
-		todoTextElement.classList.add("todoText");
-		todoTextElement.textContent = currentProject.todos[i].textContent;
-
-		todoDiv.appendChild(todoTextElement);
-
-		todoDivList.push(todoDiv);
-
-		todoNumber++;
-
-		console.log(`TodoDivList: ${todoDivList}`);
-	}
-}
-
-function DeleteTodo() {
-    //
-}
+// function ClearDuplicates() {
+// 	for (let i = 0; i < currentProject.todos.length; i++) {
+// 		let title = currentProject.todos[i].title;
+// 		for (let j = 0; j < currentProject.todos.length; j++) {
+// 			if (title == currentProject.todos[j].title && title != currentProject.todos[i].title) {
+// 				currentProject.todoDivs.splice(currentProject.todoDivs[j], 1);
+// 				currentProject.todos.splice(currentProject.todos[j], 1);
+// 			}
+// 		}
+// 		console.log("After Duplicates CurrentProject.todoDivs:");
+// 		console.log(currentProject.todoDivs);
+// 	}
+// }
 
 // This code executes n amount of times for the project's index,
 // project[0] gets their todo display-code executed 
@@ -241,19 +254,13 @@ function DeleteTodo() {
 // executes the loop twice, but not the function itself. Fix this
 // and the error might be over. Try to fix this first.
 
-// Look at places where DisplayTodos is called and check if the 
-// eventListeners are only added once with counters.
-
-let counter = 0;
+// This code is the only one that calls CreateTodoDiv, let's keep
+// it in mind.
 
 function DisplayTodos() {
 	let mainField = document.getElementById("main-field");
 
-	CreateTodoDiv();
-
-    for (let i = 0; i < todoDivList.length; i++) {
-		mainField.appendChild(todoDivList[i]);
+    for (let i = 0; i < currentProject.todoDivs.length; i++) {
+		mainField.appendChild(currentProject.todoDivs[i]);
     }
-
-	counter++;
 }
