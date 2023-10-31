@@ -26,6 +26,7 @@
 #grid-container {
   min-height: 100vh;
   width: 100vw;
+  min-width: 300px;
   display: grid;
   grid-template-rows: 2fr 1.1fr 1.25fr 10fr .85fr;
 }
@@ -64,7 +65,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100vw;
 }
 
 #main-field {
@@ -75,9 +75,8 @@
   border-bottom: var(--green-border);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
-  grid-template-rows: repeat(auto-fit, minmax(275px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
   text-align: center;
-  place-content: center;
   place-items: center;
 }
 
@@ -88,6 +87,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 75px;
+  height: 60px;
 }
 
 .github-link {
@@ -139,8 +140,114 @@
 }
 
 .projectTitle {
-  font-size: .65rem;
+  font-size: .7rem;
   font-family: "Roboto", sans-serif;
+}
+
+@media (min-width: 1000px) {
+  #function-bar {
+    font-size: 1.6rem;
+  }
+  #grid-container {
+    grid-template-rows: 2fr 1.2fr 1.35fr 10fr .95fr;
+  }
+  .projectImage {
+    width: 27.5px;
+    height: 27.5px;
+  }
+  .projectTitle {
+    font-size: .775rem;
+  }
+  .project {
+    gap: 7.5px;
+  }
+}
+
+/* Start Grid Queries */
+
+@media (min-width: 1126px) {
+  #header {
+    height: 130px;
+  }
+  #function-bar {
+    height: 57.5px;
+  }
+  #project-bar {
+    height: 62.5px;
+  }
+  #grid-container {
+    grid-template-rows: .65fr .25fr .425fr 3.75fr .25fr;
+  }
+}
+
+@media (max-width: 1125px) {
+  #header {
+    height: 130px;
+  }
+  #function-bar {
+    height: 57.5px;
+  }
+  #project-bar {
+    height: 62.5px;
+  }
+  #grid-container {
+    grid-template-rows: .65fr .25fr .425fr 3.75fr .25fr;
+  }
+}
+
+@media (max-width: 675px) {
+  #header {
+    height: 120px;
+  }
+  #function-bar {
+    height: 67.5px;
+  }
+  #project-bar {
+    height: 55px;
+  }
+  #grid-container {
+    grid-template-rows: .65fr .25fr .425fr 3.75fr .25fr;
+  }
+}
+
+@media (max-width: 455px) {
+  #header {
+    height: 110px;
+  }
+  #function-bar {
+    height: 70px;
+  }
+  #project-bar {
+    height: 60px;
+  }
+  #grid-container {
+    grid-template-rows: .1fr .1fr .1fr 4.75fr .15fr;
+  }
+  #footer {
+    height: 60px;
+    max-height: 75px;
+  }
+  #function-bar {
+    font-size: 1.2rem;
+  }
+}
+
+/* End Grid Queries */
+
+@media (max-width: 575px) {
+  #function-bar {
+    font-size: 1.35rem;
+  }
+  .projectImage {
+    width: 27.5px;
+    height: 27.5px;
+  }
+  .projectTitle {
+    font-size: .675rem;
+  }
+  .project {
+    gap: 7.5px;
+  }
 }
 
 /* End Project Styling */
@@ -148,14 +255,15 @@
 /* Todo Screen Styling */
 
 .todo {
-  height: 235px;
-  width: 180px;
   background-color: white;
   border-radius: 5%;
   border: 3px solid var(--dark-green);
   display: grid;
   grid-template-rows: 1fr 4fr;
   place-items: center;
+  min-width: 175px;
+  min-height: 225px;
+  margin: 15px 0;
 }
 
 .todoTitle {
