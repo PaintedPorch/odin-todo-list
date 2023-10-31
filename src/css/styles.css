@@ -176,7 +176,7 @@
     height: 62.5px;
   }
   #grid-container {
-    grid-template-rows: .65fr .25fr .425fr 3.75fr .25fr;
+    grid-template-rows: .5fr .2fr .25fr 3.75fr .25fr;
   }
 }
 
@@ -191,7 +191,7 @@
     height: 62.5px;
   }
   #grid-container {
-    grid-template-rows: .65fr .25fr .425fr 3.75fr .25fr;
+    grid-template-rows: .5fr .2fr .25fr 3.75fr .25fr;
   }
 }
 
@@ -200,28 +200,28 @@
     height: 120px;
   }
   #function-bar {
-    height: 67.5px;
+    height: 57.5px;
   }
   #project-bar {
-    height: 55px;
+    height: 62.5px;
   }
   #grid-container {
-    grid-template-rows: .65fr .25fr .425fr 3.75fr .25fr;
+    grid-template-rows: .3fr .1fr .25fr 3.75fr .25fr;
   }
 }
 
 @media (max-width: 455px) {
   #header {
-    height: 110px;
+    height: 100px;
   }
   #function-bar {
-    height: 70px;
+    height: 50px;
   }
   #project-bar {
     height: 60px;
   }
   #grid-container {
-    grid-template-rows: .1fr .1fr .1fr 4.75fr .15fr;
+    grid-template-rows: .2fr .1fr .2fr 2fr .15fr;
   }
   #footer {
     height: 60px;

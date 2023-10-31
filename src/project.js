@@ -190,9 +190,10 @@ export function CreateTodoScreen() {
 }
 
 let todoNumber = 0;
-let todoCount = 0;
 
 export function CreateTodo(todoTitle = "", todoText = "") {
+	let todoCount = currentProject.todos.length;
+
 	if (todoCount < 10) {
 		todoTitle = prompt("What is the todo's title?");
 		todoText = prompt("What is the todo's text?");
@@ -220,7 +221,6 @@ export function CreateTodo(todoTitle = "", todoText = "") {
 		currentProject.todoDivs.push(todoDiv);
 
 		todoNumber++;
-		todoCount++;
 	}
 	else {
 		alert("You have reached the maximum amount of todos.");
@@ -235,8 +235,6 @@ function DeleteTodo() {
 		if (todoToDelete.toLowerCase() == (currentProject.todos[i].title).toLowerCase()) {
 			currentProject.todos.splice((i), 1);
 			currentProject.todoDivs.splice((i), 1);
-
-			todoCount--;
 		}
 	}
 }
